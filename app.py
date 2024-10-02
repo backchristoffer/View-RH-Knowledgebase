@@ -24,7 +24,7 @@ def get_access_token():
         return None
     
 #based on https://access.redhat.com/management/api/case_management#/search/getKcsSearchResults
-def get_kcs_articles(keyword, limit=5):
+def get_kcs_articles(keyword, limit=100):
     access_token = get_access_token()
 
     if not access_token:
@@ -53,7 +53,7 @@ def main():
         epilog='Example: python3 app.py 6988487 --limit 1'
     )
     parser.add_argument('query', type=str, help='Search query string (e.g., document id or keyword)')
-    parser.add_argument('--limit', type=int, default=5, help='Limit number of results (default: 5)')
+    parser.add_argument('--limit', type=int, default=100, help='Limit number of results (default: 5)')
 
     args = parser.parse_args()
 
